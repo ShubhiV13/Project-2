@@ -12,12 +12,12 @@ async function initDb() {
             fundingStage TEXT NOT NULL
         );
     `);
-    displayCompanies(); // Display existing data after initialization
+    displayCompanies(); 
 }
 
 function displayCompanies() {
     const tbody = document.getElementById('companyTableBody');
-    tbody.innerHTML = ''; // Clear existing rows
+    tbody.innerHTML = ''; 
     const result = db.exec('SELECT * FROM companies');
     if (result.length > 0 && result[0].values) {
         result[0].values.forEach(row => {
@@ -56,11 +56,11 @@ document.getElementById('companyForm').addEventListener('submit', async (e) => {
         );
         document.getElementById('message').innerHTML = '<p class="text-green">Company data saved successfully!</p>';
         form.reset();
-        displayCompanies(); // Update table with new data
+        displayCompanies(); 
     } catch (error) {
         document.getElementById('message').innerHTML = '<p class="text-red">Error saving data: ' + error.message + '</p>';
     }
 });
 
-// Ensure database is initialized and data is displayed on page load
+
 initDb().catch(error => console.error('Database initialization failed:', error));
